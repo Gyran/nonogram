@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Nonogram</title>
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect fill='%231c1916' x='1' y='1' width='6' height='6'/%3E%3Crect fill='%231c1916' x='9' y='9' width='6' height='6'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main>
+    <header class="top">
+      <div>
+        <h1>Nonogram</h1>
+        <p class="lede">Fill cells so each row and column matches its clues.</p>
+      </div>
+      <p id="status" class="status" role="status">Loading puzzle.</p>
+    </header>
+
+    <div class="controls">
+      <fieldset class="seg">
+        <legend>Size</legend>
+        <button type="button" data-rows="5" data-cols="5">5×5</button>
+        <button type="button" data-rows="7" data-cols="10">7×10</button>
+        <button type="button" data-rows="10" data-cols="10">10×10</button>
+        <button type="button" data-rows="20" data-cols="20">20×20</button>
+      </fieldset>
+      <fieldset class="seg">
+        <legend>Difficulty</legend>
+        <button type="button" data-difficulty="easy">Easy</button>
+        <button type="button" data-difficulty="medium">Medium</button>
+      </fieldset>
+      <div class="actions">
+        <button type="button" id="new-puzzle">New</button>
+        <button type="button" id="reset">Reset</button>
+        <button type="button" id="check">Check</button>
+        <button type="button" id="solve">Solve</button>
+        <button type="button" id="fullscreen" aria-pressed="false">Fullscreen</button>
+      </div>
+      <form id="seed-form" class="seed-form">
+        <label for="seed">Seed</label>
+        <input id="seed" name="seed" inputmode="numeric" autocomplete="off" spellcheck="false" />
+        <button type="button" id="copy-link">Copy link</button>
+      </form>
+    </div>
+
+    <p class="help">
+      Click a cell to fill it, click again for X, click again to clear. Drag paints that choice. Commas separate blocks
+      (1, 5 is a one and a five, not fifteen). A line turns green when its filled cells match.
+      Progress stays on this device. The link reopens the same puzzle.
+    </p>
+
+    <div class="board-wrap">
+      <button type="button" id="exit-fullscreen">Close</button>
+      <section id="board" class="board" aria-label="Nonogram grid"></section>
+    </div>
+  </main>
+  <script src="src/puzzle.js"></script>
+  <script src="src/app.js"></script>
+</body>
+
+</html>
